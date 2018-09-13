@@ -1,0 +1,122 @@
+﻿@model TriopodMvc.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+}
+
+<section id="home-heading" class="p-5">
+    <div class="dark-overlay">
+        <div class="row">
+            <div class="col">
+                <div class="container pt-5">
+                    <h1 class="display-4">Contact Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h4>Get In Touch</h4>
+                        <p>Triopod Technology Pvt. Ltd</p>
+                        <h4>Address</h4>
+                        <p>
+                            Wa 120A Mother dairy road <br> Shakarpur,
+                            New Delhi, INDIA - 110092
+                        </p>
+                        <h4>Email</h4>
+                        <p><i class="fas fa-envelope-open mr-2"></i>triopodindia@outlook.com </p>
+                        <h4>Phone</h4>
+                        <p><i class="fas fa-phone mr-2"></i>011-47529493 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card p-4">
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <h3 class="text-center">Please fill out this form to contact us</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last Name", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Number, new { placeholder = "Phone Number", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.HiddenFor(m => m.DateTime)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(m => m.Message, new { placeholder = "Type your Message here", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="submit" value="Submit" class="btn btn-outline-success btn-block">
+                                </div>
+                            </div>
+                        }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STAFF SECTION -->
+<section id="staff" class="py-5 text-center bg-dark text-white">
+    <div class="container">
+        <h1>Our Staff</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="~/Content/img/person1.jpg" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>Jane Doe</h4>
+                <small>Marketing Manager</small>
+            </div>
+            <div class="col-md-3">
+                <img src="~/Content/img/person2.jpg" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>Sara Williams</h4>
+                <small>Business Manager</small>
+            </div>
+            <div class="col-md-3">
+                <img src="~/Content/img/person3.jpg" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>John Doe</h4>
+                <small>CEO</small>
+            </div>
+            <div class="col-md-3">
+                <img src="~/Content/img/person4.jpg" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>Steve Smith</h4>
+                <small>Web Developer</small>
+            </div>
+        </div>
+    </div>
+</section>
+
