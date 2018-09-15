@@ -10,31 +10,31 @@ namespace TriopodMvc.Models
     {
         public int ContactId { get; set; }
 
-        [Display(Name = "Enter your Email Id")]
+        [Display(Name = "Enter your First Name: ")]
         [Required(ErrorMessage = "Enter First Name")]
         [StringLength(30)]
         public string FirstName { get; set; }
 
 
-        [Display(Name = "Enter your Last Name")]
+        [Display(Name = "Enter your Last Name: ")]
         [Required(ErrorMessage = "Enter Last Name")]
         [StringLength(30)]
         public string LastName { get; set; }
 
 
-        [Display(Name = "Enter your Number")]
+        [Display(Name = "Enter your Contact Number: ")]
         [Required(ErrorMessage = "Enter your contact number")]
         public long Number { get; set; }
 
 
-        [Display(Name = "Enter your Email Id")]
+        [Display(Name = "Enter your Email Id: ")]
         [Required(ErrorMessage = "Enter Email")]
         [StringLength(30)]
         [RegularExpression(".+@.+\\..+", ErrorMessage = "Email format Invalid")]
         public string Email { get; set; }
 
 
-        [Display(Name = "Enter your Message")]
+        [Display(Name = "Enter your Message or Description For Project: ")]
         [Required(ErrorMessage = "Enter Message")]
         [StringLength(3000)]
         public string Message { get; set; }

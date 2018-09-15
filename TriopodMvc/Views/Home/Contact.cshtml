@@ -37,6 +37,7 @@
                 </div>
             </div>
             <div class="col-md-8">
+                <h4 class="text-danger">@ViewBag.Message</h4>
                 <div class="card p-4">
                     <div class="card-body">
                         @using (Html.BeginForm())
@@ -47,24 +48,28 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        @Html.LabelFor(m => m.FirstName)
                                         @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name", @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        @Html.LabelFor(m => m.LastName)
                                         @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last Name", @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        @Html.LabelFor(m => m.Email)
                                         @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        @Html.LabelFor(m => m.Number)
                                         @Html.TextBoxFor(m => m.Number, new { placeholder = "Phone Number", @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
                                     </div>
@@ -74,6 +79,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        @Html.LabelFor(m => m.Message)
                                         @Html.TextAreaFor(m => m.Message, new { placeholder = "Type your Message here", @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
                                     </div>
@@ -83,7 +89,7 @@
                                 </div>
                             </div>
                         }
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

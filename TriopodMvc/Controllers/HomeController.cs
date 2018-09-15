@@ -50,31 +50,51 @@ namespace TriopodMvc.Controllers
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
+                ViewBag.Message = "Your Form Submitted";
                 return RedirectToAction("Contact");
             }
 
             return View(contact);
         }
 
-        public ActionResult NewEntry()
+        public ActionResult ListContact()
         {
-            Customer cus = new Customer();
-            cus.DateTime = System.DateTime.Now;
-            return View(cus);
+            var contacts = db.Contacts.ToList();
+            return View(contacts);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var emp = db.Contacts.Single(x => x.ContactId == id);
+            return View(emp);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var emp = db.Contacts.Single(x => x.ContactId == id);// .Select(x => x.EmplyeeId == id).SingleOrDefault();
+
+            return View(emp);
+
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult NewEntry(Customer customer)
+        public ActionResult Delete(int id, Contact contact)
         {
-            if(ModelState.IsValid)
+            try
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Contact");
-            }
 
-            return View(customer);
+                contact.ContactId = id;
+
+                db.Entry(contact).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
+
     }
 }

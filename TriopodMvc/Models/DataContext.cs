@@ -10,6 +10,5 @@ namespace TriopodMvc.Models
     {
         public DbSet<Contact> Contacts { get; set; }
 
-        public DbSet<Customer> Customers { get; set; }
     }
 }
