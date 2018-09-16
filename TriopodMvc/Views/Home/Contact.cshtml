@@ -16,7 +16,7 @@
 </section>
 
 <!-- CONTACT SECTION -->
-<section id="contact" class="py-3">
+<section id="contact" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <h4 class="text-danger">@ViewBag.Message</h4>
+                <p>@ViewBag.result<p />
                 <div class="card p-4">
                     <div class="card-body">
                         @using (Html.BeginForm())
@@ -88,6 +88,11 @@
                                     <input type="submit" value="Submit" class="btn btn-outline-success btn-block">
                                 </div>
                             </div>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <p>Welcome @User.Identity.Name</p>
+                            <a href="@Url.Action("ListContact", "Home")" class="btn btn-block btn-success ml-2">Show List</a>
                         }
                     </div>
                 </div>

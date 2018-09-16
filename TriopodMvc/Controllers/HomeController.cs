@@ -50,25 +50,28 @@ namespace TriopodMvc.Controllers
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
-                ViewBag.Message = "Your Form Submitted";
+                ViewBag.result = "Record Inserted Successfully!";
                 return RedirectToAction("Contact");
             }
 
             return View(contact);
         }
 
+        [Authorize]
         public ActionResult ListContact()
         {
             var contacts = db.Contacts.ToList();
             return View(contacts);
         }
 
+        [Authorize]
         public ActionResult Details(int id)
         {
             var emp = db.Contacts.Single(x => x.ContactId == id);
             return View(emp);
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var emp = db.Contacts.Single(x => x.ContactId == id);// .Select(x => x.EmplyeeId == id).SingleOrDefault();
@@ -77,6 +80,7 @@ namespace TriopodMvc.Controllers
 
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, Contact contact)
         {
@@ -88,7 +92,7 @@ namespace TriopodMvc.Controllers
                 db.Entry(contact).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("ListContact");
             }
             catch
             {

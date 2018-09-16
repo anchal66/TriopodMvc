@@ -12,20 +12,33 @@
 </head>
 <body>
     <div class="bg-dark text-white d-flex justify-content-between p-1 px-4">
-        <div class=""> <b> Email:</b> <i class="fas fa-envelope-open mx-1"></i>triopodindia@outlook.com</div>
-        <div class=""> <b> Phone: </b><i class="fas fa-phone mx-2"></i>011-47529493</div>
+        <div class="px-1"> <b> Email:</b> <i class="fas fa-envelope-open mx-1"></i>triopodindia@outlook.com</div>
+        <div class="px-1">
+            <b> Phone: </b><i class="fas fa-phone mx-2"></i>011-47529493 
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>Welcome @User.Identity.Name</p>
+                <a href="@Url.Action("Logout", "Admin")" class="btn btn-sm btn-danger ml-2">Logout</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Login", "Admin")" class="btn btn-sm btn-danger ml-2">Admin</a>
+            }
+        </div>
     </div>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
+       
         <div class="container">
             <a href="@Url.Action("Index", "Home")" class="navbar-brand py-0"><img src="~/Content/img/logo.png" alt="logo" style="background-size: cover; height: 50px;"></a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navNavbar"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link active" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Services", "Services", "Home", new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Product", "Product", "Home", new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
+
                 </ul>
             </div>
         </div>
@@ -83,7 +96,7 @@
                         <h4 class="wow fadeInUp text-danger" data-wow-duration="3s" data-wow-delay="2s"></h4>
                         <h5 class="text-hide">Created By:</h5>
                         <p class="text-hide">Anchal</p>
-                        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                        <p>&copy; 2013 - Triopod Technology</p>
                     </div>
                 </div>
             </div>
